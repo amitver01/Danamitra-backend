@@ -44,8 +44,17 @@ const deleteCampaign = async (req, res) => {
   }
 };
 
+const campaign = async (req, res) => {
+  try {
+      const events = await Campaign.find();
+      res.status(200).json(events);
+  } catch (error) {
+      res.status(500).json({ error: "Failed to fetch events from MongoDB" });
+  }
+};
 
 module.exports = {
     createCampaign,
-    deleteCampaign
+    deleteCampaign,
+    campaign
   };
