@@ -9,8 +9,13 @@ const campaignRoutes = require('./routes/campaignRoutes')
 const app=express();
 
 app.use(express.json());
-app.use(cors());
 
+
+app.use(cors({
+    origin: 'http://localhost:5173', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+    credentials: true
+  }));
 connectDB();
 
 app.get('/' , (req , res) => {

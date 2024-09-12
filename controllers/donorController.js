@@ -21,7 +21,7 @@ const registerDonor = async (req, res) => {
       expiresIn: '1h',
     });
 
-    res.status(201).json({ donor });
+    res.status(201).json({ donor , token });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
