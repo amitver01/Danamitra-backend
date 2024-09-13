@@ -46,9 +46,21 @@ const loginDonor = async (req, res) => {
 
     const token = jwt.sign({ id: donor._id }, process.env.JWT_SECRET, {
       expiresIn: '1h',
-      
     });
+    res.cookie('token', token);
     res.status(200).json({ donor , token});
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+const logoutDonor = async (req, res) => {
+  try {
+    res.cookie('token', '' ,{
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
+      maxAge: 0, // Cookie expiration in milliseconds
+    });
+    res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -82,5 +94,6 @@ const searchDonor = async (req, res) => {
 module.exports = {
   registerDonor,
   loginDonor,
+  logoutDonor,
   searchDonor
 };
