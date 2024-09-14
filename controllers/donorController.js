@@ -53,13 +53,10 @@ const loginDonor = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+//logout donor
 const logoutDonor = async (req, res) => {
   try {
-    res.cookie('token', '' ,{
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production', // Set to true if using HTTPS
-      maxAge: 0, // Cookie expiration in milliseconds
-    });
+    res.cookie('token', "");
     res.status(200).json({ message: 'Logged out successfully' });
   } catch (error) {
     res.status(500).json({ message: error.message });
