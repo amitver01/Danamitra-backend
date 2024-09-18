@@ -30,7 +30,7 @@ const deleteCampaign = async (req, res) => {
 
   try {
     const campaign = await Campaign.findById(_id);
-
+    //gitconsole.log(campaign)
     if (!campaign) {
       return res.status(404).json({ message: "Campaign not found" });
     }
@@ -49,7 +49,7 @@ const campaign = async (req, res) => {
       const events = await Campaign.find();
       res.status(200).json(events);
   } catch (error) {
-      res.status(500).json({ error: "Failed to fetch events from MongoDB" });
+      res.status(500).json({ error: "Failed to fetch events" });
   }
 };
 
