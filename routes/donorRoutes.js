@@ -4,7 +4,7 @@ const { registerDonor, loginDonor , logoutDonor , searchDonor} = require('../con
 
 router.post('/register', registerDonor);
 router.post('/login', loginDonor);
-router.post('/searchDonor' , searchDonor)
+router.post('/search' , searchDonor)
 router.get('/logoutDonor' , logoutDonor)
 
 module.exports = router;
