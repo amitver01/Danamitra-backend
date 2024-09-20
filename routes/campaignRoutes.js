@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { createCampaign, deleteCampaign , campaign } = require('../controllers/campaignController');
-
-router.post('/create', createCampaign);
-router.post('/delete', deleteCampaign);
+const protectRoute = require('../middleware/authMiddleware');
+router.post('/create', protectRoute ,createCampaign);
+router.post('/delete', protectRoute ,deleteCampaign);
 router.get('/campaign', campaign);
 
 module.exports = router;

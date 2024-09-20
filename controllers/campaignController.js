@@ -12,6 +12,7 @@ const createCampaign = async (req, res) => {
       createdAt
     });
     await campaign.save();
+    console.log(campaign);
     res.status(201).json({
    campaign
     });
