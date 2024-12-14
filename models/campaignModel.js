@@ -6,6 +6,11 @@ const campaignSchema = new mongoose.Schema({
         required: [true, 'Name is required'],
         trim: true
       },
+      category: {
+        type:String,
+        default: "misc",
+        trim: true
+      },
       goalAmount : {
         type: Number,
         required : [true, 'Amount is required'],

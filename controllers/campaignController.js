@@ -54,8 +54,29 @@ const campaign = async (req, res) => {
   }
 };
 
+const searchCampaignsByCategory = async (req, res) => {
+  const { category } = req.query;  // Get category from query parameters
+
+  if (!category) {
+    return res.status(400).json({ message: "Category is required" });
+  }
+
+  try {
+    const campaigns = await Campaign.find({ category: category });  // Search campaigns by category
+
+    if (campaigns.length === 0) {
+      return res.status(404).json({ message: "No campaigns found in this category" });
+    }
+
+    res.status(200).json(campaigns);  // Return the list of campaigns
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
     createCampaign,
     deleteCampaign,
-    campaign
+    campaign,
+    searchCampaignsByCategory
   };
