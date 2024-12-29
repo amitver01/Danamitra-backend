@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: 'https://danmitra.vercel.app/', // replace with your frontend URL in production
+    origin: 'https://danmitra.vercel.app', // replace with your frontend URL in production
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
@@ -29,7 +29,7 @@ app.get('/' , (req , res) => {
 app.use('/api/donors', donorRoutes);
 app.use('/api/org' , orgRoutes)
 app.use('/api/campaign' , campaignRoutes)
-app.use('api/payment' , paymentRoutes)
+app.use('/api/payment' , paymentRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT , () => {
