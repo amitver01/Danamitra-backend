@@ -13,11 +13,13 @@ const app=express();
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(cors({
-    origin: 'http://localhost:5173', 
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], 
-    credentials: true
-  }));
+const corsOptions = {
+    origin: 'http://localhost:5173', // replace with your frontend URL in production
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+  };
+  
+app.use(cors(corsOptions));
 connectDB();
 
 app.get('/' , (req , res) => {
