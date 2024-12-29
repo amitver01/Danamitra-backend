@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: 'http://localhost:5173', // replace with your frontend URL in production
+    origin: 'https://danmitra.vercel.app/', // replace with your frontend URL in production
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
@@ -23,7 +23,7 @@ app.use(cors(corsOptions));
 connectDB();
 
 app.get('/' , (req , res) => {
-    res.send("hello");
+    res.send("hello backend");
 })
 
 app.use('/api/donors', donorRoutes);
