@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: 'https://danmitra.vercel.app', // replace with your frontend URL in production
+    origin: 'https://danmitra.vercel.app/', // replace with your frontend URL in production
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
   };
