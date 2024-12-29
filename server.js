@@ -6,6 +6,7 @@ connectDB = require('./config/db');
 const donorRoutes = require('./routes/donorRoutes');
 const orgRoutes = require('./routes/orgRoutes');
 const campaignRoutes = require('./routes/campaignRoutes')
+const paymentRoutes = require('./routes/paymentRoutes');
 const cookieParser = require('cookie-parser');
 const app=express();
 
@@ -26,6 +27,7 @@ app.get('/' , (req , res) => {
 app.use('/api/donors', donorRoutes);
 app.use('/api/org' , orgRoutes)
 app.use('/api/campaign' , campaignRoutes)
+app.use('api/payment' , paymentRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT , () => {
